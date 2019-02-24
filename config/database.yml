@@ -1,0 +1,18 @@
+default: &default
+  adapter: postgresql
+  encoding: unicode
+  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+
+development:
+  <<: *default
+  database: chat_room_app_development
+
+test:
+  <<: *default
+  database: chat_room_app_test
+
+production:
+  <<: *default
+  database: chat_room_app_production
+  username: chat_room_app
+  password: <%= ENV['CHAT-ROOM-APP_DATABASE_PASSWORD'] %>
