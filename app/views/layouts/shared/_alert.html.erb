@@ -1,0 +1,8 @@
+<% if flash.any? %>
+  <% flash.each do |name, message| %>
+    <div class="ui <%="#{name}" %> message">
+      <i class="close icon"></i>
+      <%= content_tag :div, message, :id => "flash_#{name}" if message.is_a?(String) %>
+    </div>
+  <% end %>
+<% end %>
