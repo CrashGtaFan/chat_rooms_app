@@ -1,0 +1,35 @@
+<h1>New user registration</h1>
+<% if @user.errors.any? %>
+  <div class="ui error message">
+    <i class="close icon"></i>
+    <div class="header">You have some errors!</div>
+    <ul class="list">
+      <% @user.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+    </ul>
+  </div>
+<% end %>
+<%= form_for(@user, html: { class: 'ui form', role: 'form'}) do |f| %>
+  <div class="two fields">
+    <div class="field">
+      <%= f.label :username %>
+      <%= f.text_field :username, placeholder: 'Enter username', required: true %>
+    </div>
+    <div class="field">
+      <%= f.label :email %>
+      <%= f.email_field :email, placeholder: 'Enter email', required: true %>
+    </div>
+  </div>
+  <div class="two fields">
+    <div class="field">
+      <%= f.label :password %>
+      <%= f.password_field :password, placeholder: 'Enter password', required: true %>
+    </div>
+    <div class="field">
+      <%= f.label :password_confirmation %>
+      <%= f.password_field :password_confirmation, placeholder: 'Confirm your password', required: true %>
+    </div>
+  </div>
+  <%= f.submit 'Sign up', class: 'ui orange submit button' %>
+<% end %>

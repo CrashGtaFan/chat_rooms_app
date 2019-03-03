@@ -13,6 +13,13 @@ class ApplicationController < ActionController::Base
   def require_user
     if !current_user
       flash[:negative] = 'You must be authentificated to perform that action'
+      redirect_to login_path
+    end
+  end
+  
+  def logged_in_redirect
+    if logged_in?
+      flash[:negative] = 'You are arleady logged in'
       redirect_to root_path
     end
   end
