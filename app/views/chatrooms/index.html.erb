@@ -1,20 +1,20 @@
 <h2 class="ui center aligned icon header">
-  <i class="orange circular beer icon"></i> Online chat with cup of beer
+  <i class="orange circular beer icon"></i> Online chat with glass of beer
 </h2>
 <div class='ui two column grid'>
 	<div class='twelve wide column'>
 		<div class='ui fluid raised card chatbox'>
-			<div class='content'>
-				<div class="ui feed">
-					<h4 class="ui header">Followers Activity</h4>
+			<div class='content' id='messages'>
+			  <h4 class="ui header">Followers Activity</h4>
+				<div class="ui feed" id='message-container'>
 					<%= render @messages %>
 				</div>
 			</div>
-			<div class='extra content'>
-			  <%= form_for(@message, html: { class: 'ui reply form', role: 'form' }) do |f| %>
+			<div class='extra content message-form'>
+			  <%= form_for(@message, html: { class: 'ui reply form', role: 'form' }, remote: true) do |f| %>
 			    <div class='field'>
 			      <div class="ui icon input">
-			        <%= f.text_field :body, placeholder: 'Write something', required: true %>
+			        <%= f.text_field :body, placeholder: 'Write something', id: 'message-field' %>
 			        <%= f.button '<i class="icon edit"></i>'.html_safe, class: "ui orange button" %>
             </div>
 			    </div>
