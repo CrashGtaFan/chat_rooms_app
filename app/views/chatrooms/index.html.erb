@@ -1,7 +1,7 @@
 <h2 class="ui center aligned icon header">
   <i class="orange circular beer icon"></i> Online chat with glass of beer
 </h2>
-<div class='ui two column grid'>
+<div class='ui stackable two column grid'>
 	<div class='twelve wide column'>
 		<div class='ui fluid raised card chatbox'>
 			<div class='content' id='messages'>
@@ -25,9 +25,10 @@
 	<div class='four wide column'>
 		<div class='ui raised card chatbox'>
 			<div class='content'>
-				<div class="ui vertical menu"> <a class="active item">Home</a>
-					<a class="item"> Messages</a>
-					<a class="item">Friends</a>
+				<div class="ui vertical menu"> <a class="active item">All users</a>
+				  <% User.all.each do |user| %>
+					  <a class="item"><%= user.username %></a>
+					<% end %>
 				</div>
 			</div>
 		</div>
